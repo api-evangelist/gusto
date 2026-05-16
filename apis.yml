@@ -6,12 +6,97 @@ image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Human Resources
   - Payroll
+  - Benefits
   - Enterprise Software
-description: 'A cloud-based payroll, benefits, and human resources platform designed for small and medium-sized businesses. Simplifies payroll processing, health insurance administration, and HR compliance for growing companies.'
+  - Embedded Finance
+description: 'A cloud-based payroll, benefits, and human resources platform designed for small and medium-sized businesses. Gusto Embedded enables platforms to integrate payroll, tax filing, and HR workflows directly into their products via a REST API, React SDK, and webhooks.'
 created: '2026-05-05'
-modified: '2026-05-05'
+modified: '2026-05-16'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: gusto:embedded-payroll-api
+    name: Gusto Embedded Payroll API
+    tags:
+      - Payroll
+      - Employees
+      - Contractors
+      - Companies
+      - Onboarding
+      - Tax Filing
+      - Benefits
+      - ACH
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.gusto.com/embedded-payroll
+    baseURL: https://api.gusto.com
+    description: >-
+      The Gusto Embedded Payroll API enables platforms to build and embed modern
+      payroll, benefits, and HR tooling into their own products. The API exposes
+      endpoints for company onboarding, employee and contractor management,
+      payroll runs, tax filings, benefits administration, ACH transactions, and
+      compliance reporting. Authentication uses OAuth 2.0; partners must complete
+      commercial, security, and implementation reviews with Gusto's partnerships
+      team before moving from the demo environment to production.
+    properties:
+      - type: Documentation
+        url: https://docs.gusto.com/embedded-payroll
+      - type: SignupURL
+        url: https://gusto.com/embedded-payroll
+      - type: Webhooks
+        url: https://docs.gusto.com/embedded-payroll/docs/webhooks
+      - type: Authentication
+        url: https://docs.gusto.com/embedded-payroll/docs/authentication
+  - aid: gusto:embedded-react-sdk
+    name: Gusto Embedded React SDK
+    tags:
+      - SDK
+      - React
+      - TypeScript
+      - UI Components
+      - Embedded
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://github.com/Gusto/embedded-react-sdk
+    baseURL: https://api.gusto.com
+    description: >-
+      The Gusto Embedded React SDK provides pre-built UI flows and components
+      that platforms can drop into their own React applications to surface
+      Gusto Embedded Payroll experiences (company onboarding, employee
+      onboarding, payroll runs, document signing) without building custom UI
+      against the underlying API.
+    properties:
+      - type: SourceCode
+        url: https://github.com/Gusto/embedded-react-sdk
+      - type: SDK
+        url: https://www.npmjs.com/package/@gusto/embedded-react-sdk
+      - type: Documentation
+        url: https://docs.gusto.com/embedded-payroll/docs/react-sdk
 common:
   - type: Website
     url: https://gusto.com/
+  - type: DeveloperPortal
+    url: https://docs.gusto.com/embedded-payroll
+  - type: Documentation
+    url: https://docs.gusto.com/embedded-payroll
+  - type: SignupURL
+    url: https://gusto.com/embedded-payroll
+  - type: SourceCode
+    url: https://github.com/Gusto
+  - type: SDK
+    url: https://github.com/Gusto/gusto-python-client
+  - type: SDK
+    url: https://github.com/Gusto/gusto-typescript-client
+  - type: SDK
+    url: https://github.com/Gusto/gusto-ruby-client
+  - type: SDK
+    url: https://github.com/Gusto/gusto-java-client
+  - type: SDK
+    url: https://github.com/Gusto/gusto-csharp-client
+  - type: PrivacyPolicy
+    url: https://gusto.com/about/privacy
+  - type: TermsOfService
+    url: https://gusto.com/about/terms
+  - type: Support
+    url: https://support.gusto.com/
+  - type: Blog
+    url: https://gusto.com/blog
+  - type: Login
+    url: https://app.gusto.com/login
