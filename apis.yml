@@ -70,6 +70,8 @@ apis:
       - type: Documentation
         url: https://docs.gusto.com/embedded-payroll/docs/react-sdk
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/gustohq
   - type: Website
     url: https://gusto.com/
   - type: DeveloperPortal
