@@ -102,3 +102,5 @@ common:
     url: https://gusto.com/blog
   - type: Login
     url: https://app.gusto.com/login
+  - type: LLMsTxt
+    url: https://docs.gusto.com/llms.txt
