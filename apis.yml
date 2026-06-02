@@ -11,7 +11,7 @@ tags:
   - Embedded Finance
 description: 'A cloud-based payroll, benefits, and human resources platform designed for small and medium-sized businesses. Gusto Embedded enables platforms to integrate payroll, tax filing, and HR workflows directly into their products via a REST API, React SDK, and webhooks.'
 created: '2026-05-05'
-modified: '2026-05-16'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
   - aid: gusto:embedded-payroll-api
@@ -43,6 +43,8 @@ apis:
         url: https://gusto.com/embedded-payroll
       - type: Webhooks
         url: https://docs.gusto.com/embedded-payroll/docs/webhooks
+      - type: AsyncAPI
+        url: https://raw.githubusercontent.com/api-evangelist/gusto/refs/heads/main/openapi/gusto-asyncapi.yml
       - type: Authentication
         url: https://docs.gusto.com/embedded-payroll/docs/authentication
   - aid: gusto:embedded-react-sdk

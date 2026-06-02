@@ -1,0 +1,995 @@
+asyncapi: '2.6.0'
+id: 'urn:com:gusto:embedded-payroll:webhooks'
+info:
+  title: Gusto Embedded Payroll Webhooks
+  version: '1.0.0'
+  description: |
+    AsyncAPI description of the Gusto Embedded Payroll webhook event surface.
+
+    Gusto Embedded delivers asynchronous event notifications to a partner-hosted
+    HTTPS endpoint when state changes occur on resources such as Company,
+    Employee, Contractor, Payroll, Form, and related entities. Each subscription
+    is created for a specific resource type and one or more event types, and
+    payloads are signed with an HMAC-SHA256 signature derived from a
+    verification token issued during subscription verification.
+
+    Source: https://docs.gusto.com/embedded-payroll/docs/webhooks-overview
+  contact:
+    name: Gusto Embedded Payroll Developer Docs
+    url: https://docs.gusto.com/embedded-payroll
+  license:
+    name: Proprietary - Gusto Partner Terms
+    url: https://gusto.com/about/terms
+  termsOfService: https://gusto.com/about/terms
+
+defaultContentType: application/json
+
+servers:
+  partner-endpoint:
+    url: '{partner_webhook_url}'
+    protocol: https
+    description: |
+      Partner-hosted HTTPS endpoint registered as the `url` on a Gusto webhook
+      subscription. Gusto POSTs JSON event payloads to this URL. Endpoints
+      should respond with a 2xx status within 10 seconds; Gusto retries up to
+      16 times across roughly 3 days using exponential backoff.
+    variables:
+      partner_webhook_url:
+        default: https://example.com/webhooks/gusto
+        description: Absolute HTTPS URL of the partner's webhook receiver.
+    security:
+      - gustoHmacSignature: []
+
+channels:
+  webhooks/bank-account:
+    description: |
+      Bank Account lifecycle events. Resource type `BankAccount`.
+    subscribe:
+      summary: Receive Bank Account events from Gusto.
+      operationId: receiveBankAccountEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/BankAccountEvent'
+
+  webhooks/company:
+    description: |
+      Company lifecycle events. Resource type `Company`.
+    subscribe:
+      summary: Receive Company events from Gusto.
+      operationId: receiveCompanyEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/CompanyEvent'
+
+  webhooks/company-benefit:
+    description: |
+      Company Benefit events. Resource type `CompanyBenefit`.
+    subscribe:
+      summary: Receive Company Benefit events from Gusto.
+      operationId: receiveCompanyBenefitEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/CompanyBenefitEvent'
+
+  webhooks/contractor:
+    description: |
+      Contractor lifecycle events. Resource type `Contractor`.
+    subscribe:
+      summary: Receive Contractor events from Gusto.
+      operationId: receiveContractorEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/ContractorEvent'
+
+  webhooks/contractor-payment:
+    description: |
+      Contractor Payment events. Resource type `ContractorPayment`.
+    subscribe:
+      summary: Receive Contractor Payment events from Gusto.
+      operationId: receiveContractorPaymentEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/ContractorPaymentEvent'
+
+  webhooks/contractor-payment-group:
+    description: |
+      Contractor Payment Group events. Resource type `ContractorPaymentGroup`.
+    subscribe:
+      summary: Receive Contractor Payment Group events from Gusto.
+      operationId: receiveContractorPaymentGroupEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/ContractorPaymentGroupEvent'
+
+  webhooks/document:
+    description: |
+      Document events. Resource type `Document`.
+    subscribe:
+      summary: Receive Document events from Gusto.
+      operationId: receiveDocumentEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/DocumentEvent'
+
+  webhooks/employee:
+    description: |
+      Employee lifecycle events. Resource type `Employee`.
+    subscribe:
+      summary: Receive Employee events from Gusto.
+      operationId: receiveEmployeeEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/EmployeeEvent'
+
+  webhooks/home-address:
+    description: |
+      Employee Home Address events. Resource type `HomeAddress`.
+    subscribe:
+      summary: Receive Employee Home Address events from Gusto.
+      operationId: receiveHomeAddressEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/HomeAddressEvent'
+
+  webhooks/work-address:
+    description: |
+      Employee Work Address events. Resource type `WorkAddress`.
+    subscribe:
+      summary: Receive Employee Work Address events from Gusto.
+      operationId: receiveWorkAddressEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/WorkAddressEvent'
+
+  webhooks/employee-benefit:
+    description: |
+      Employee Benefit events. Resource type `EmployeeBenefit`.
+    subscribe:
+      summary: Receive Employee Benefit events from Gusto.
+      operationId: receiveEmployeeBenefitEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/EmployeeBenefitEvent'
+
+  webhooks/employee-job-compensation:
+    description: |
+      Employee Job Compensation events. Resource type `EmployeeJobCompensation`.
+    subscribe:
+      summary: Receive Employee Job Compensation events from Gusto.
+      operationId: receiveEmployeeJobCompensationEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/EmployeeJobCompensationEvent'
+
+  webhooks/external-payroll:
+    description: |
+      External Payroll events. Resource type `ExternalPayroll`.
+    subscribe:
+      summary: Receive External Payroll events from Gusto.
+      operationId: receiveExternalPayrollEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/ExternalPayrollEvent'
+
+  webhooks/fast-ach-config:
+    description: |
+      Fast ACH Config events. Resource type `FastAchConfig`.
+    subscribe:
+      summary: Receive Fast ACH Config events from Gusto.
+      operationId: receiveFastAchConfigEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/FastAchConfigEvent'
+
+  webhooks/form:
+    description: |
+      Form events. Resource type `Form`.
+    subscribe:
+      summary: Receive Form events from Gusto.
+      operationId: receiveFormEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/FormEvent'
+
+  webhooks/generated-document:
+    description: |
+      Generated Document events. Resource type `GeneratedDocument`.
+    subscribe:
+      summary: Receive Generated Document events from Gusto.
+      operationId: receiveGeneratedDocumentEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/GeneratedDocumentEvent'
+
+  webhooks/location:
+    description: |
+      Location events. Resource type `Location`.
+    subscribe:
+      summary: Receive Location events from Gusto.
+      operationId: receiveLocationEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/LocationEvent'
+
+  webhooks/notifications:
+    description: |
+      Notifications events. Resource type `Notifications`.
+    subscribe:
+      summary: Receive Notification events from Gusto.
+      operationId: receiveNotificationEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/NotificationEvent'
+
+  webhooks/payroll:
+    description: |
+      Payroll lifecycle events. Resource type `Payroll`.
+    subscribe:
+      summary: Receive Payroll events from Gusto.
+      operationId: receivePayrollEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/PayrollEvent'
+
+  webhooks/pay-schedule:
+    description: |
+      Pay Schedule events. Resource type `PaySchedule`.
+    subscribe:
+      summary: Receive Pay Schedule events from Gusto.
+      operationId: receivePayScheduleEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/PayScheduleEvent'
+
+  webhooks/signatory:
+    description: |
+      Signatory events. Resource type `Signatory`.
+    subscribe:
+      summary: Receive Signatory events from Gusto.
+      operationId: receiveSignatoryEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/SignatoryEvent'
+
+  webhooks/time-off-request:
+    description: |
+      Time Off Request events. Resource type `TimeOffRequest`.
+    subscribe:
+      summary: Receive Time Off Request events from Gusto.
+      operationId: receiveTimeOffRequestEvent
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/TimeOffRequestEvent'
+
+components:
+  securitySchemes:
+    gustoHmacSignature:
+      type: httpApiKey
+      in: header
+      name: X-Gusto-Signature
+      description: |
+        Each webhook delivery includes the `X-Gusto-Signature` HTTP header,
+        whose value is an HMAC-SHA256 of the raw request body computed using
+        the `verification_token` that Gusto issued when the partner endpoint
+        was verified. Receivers must recompute the HMAC and compare it against
+        the header value before processing the payload.
+
+  messageTraits:
+    GustoSignedDelivery:
+      headers:
+        type: object
+        properties:
+          X-Gusto-Signature:
+            type: string
+            description: |
+              HMAC-SHA256 signature of the raw JSON request body, computed
+              using the subscription's `verification_token` as the shared
+              secret. Receivers MUST validate this header before trusting the
+              payload.
+            example: 8c5f1f3b4d2c1e6a9b8f0e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39
+
+  schemas:
+    EventEnvelope:
+      type: object
+      description: |
+        Common envelope that every Gusto webhook delivery conforms to. The
+        `event_type` field is shaped as `{resource}.{action}` (for example,
+        `company.provisioned` or `payroll.paid`).
+      required:
+        - uuid
+        - event_type
+        - resource_type
+        - resource_uuid
+        - entity_type
+        - entity_uuid
+        - timestamp
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          description: Unique identifier for the webhook event delivery.
+        event_type:
+          type: string
+          description: Dotted event identifier in the form `{resource}.{action}`.
+        resource_type:
+          type: string
+          description: |
+            The subscription resource type. For partner-level subscriptions
+            this is typically `Company`; resource-scoped subscriptions echo
+            the subscribed resource type.
+        resource_uuid:
+          type: string
+          format: uuid
+          description: UUID of the subscription resource.
+        entity_type:
+          type: string
+          description: |
+            The actual API resource whose state changed (for example,
+            `Employee`, `Payroll`, `Form`).
+        entity_uuid:
+          type: string
+          format: uuid
+          description: UUID of the entity whose state changed.
+        timestamp:
+          type: integer
+          format: int64
+          description: Unix epoch timestamp (seconds) for when the event occurred.
+
+    BankAccountEventType:
+      type: string
+      enum:
+        - bank_account.created
+        - bank_account.updated
+        - bank_account.deleted
+
+    CompanyEventType:
+      type: string
+      enum:
+        - company.provisioned
+        - company.deprovisioned
+        - company.partner_authorized
+        - company.migrated
+        - company.updated
+        - company.onboarded
+        - company.approved
+        - company.needs_approval
+        - company.marked_as_high_risk_business
+        - company.marked_as_marijuana_business
+        - company.suspended
+        - company.unsuspended
+        - company.payroll_transfer_completed
+
+    CompanyBenefitEventType:
+      type: string
+      enum:
+        - company_benefit.created
+        - company_benefit.updated
+        - company_benefit.deleted
+
+    ContractorEventType:
+      type: string
+      enum:
+        - contractor.created
+        - contractor.updated
+        - contractor.onboarded
+        - contractor.deactivated
+        - contractor.reactivated
+        - contractor.deleted
+
+    ContractorPaymentEventType:
+      type: string
+      enum:
+        - contractor_payment.created
+        - contractor_payment.cancelled
+
+    ContractorPaymentGroupEventType:
+      type: string
+      enum:
+        - contractor_payment_group.created
+        - contractor_payment_group.cancelled
+
+    DocumentEventType:
+      type: string
+      enum:
+        - document.created
+        - document.updated
+        - document.signed
+
+    EmployeeEventType:
+      type: string
+      enum:
+        - employee.created
+        - employee.updated
+        - employee.onboarded
+        - employee.marked_for_self_onboarding
+        - employee.terminated
+        - employee.rehired
+        - employee.deleted
+        - employee.invited_to_partner_portal
+
+    HomeAddressEventType:
+      type: string
+      enum:
+        - home_address.created
+        - home_address.updated
+        - home_address.deleted
+
+    WorkAddressEventType:
+      type: string
+      enum:
+        - work_address.created
+        - work_address.updated
+        - work_address.deleted
+
+    EmployeeBenefitEventType:
+      type: string
+      enum:
+        - employee_benefit.created
+        - employee_benefit.updated
+        - employee_benefit.deleted
+
+    EmployeeJobCompensationEventType:
+      type: string
+      enum:
+        - employee_job_compensation.created
+        - employee_job_compensation.updated
+        - employee_job_compensation.deleted
+
+    ExternalPayrollEventType:
+      type: string
+      enum:
+        - external_payroll.created
+        - external_payroll.updated
+        - external_payroll.deleted
+
+    FastAchConfigEventType:
+      type: string
+      enum:
+        - fast_ach_config.activated
+        - fast_ach_config.deactivated
+
+    FormEventType:
+      type: string
+      enum:
+        - form.created
+        - form.updated
+        - form.signed
+
+    GeneratedDocumentEventType:
+      type: string
+      enum:
+        - generated_document.generated
+        - generated_document.failed
+
+    LocationEventType:
+      type: string
+      enum:
+        - location.created
+        - location.updated
+
+    NotificationEventType:
+      type: string
+      enum:
+        - notifications.created
+        - notifications.resolved
+
+    PayrollEventType:
+      type: string
+      enum:
+        - payroll.created
+        - payroll.updated
+        - payroll.deleted
+        - payroll.calculated
+        - payroll.submitted
+        - payroll.processed
+        - payroll.paid
+        - payroll.reversed
+        - payroll.partially_reversed
+        - payroll.cancelled
+        - payroll.processing_failed
+
+    PayScheduleEventType:
+      type: string
+      enum:
+        - pay_schedule.created
+        - pay_schedule.updated
+
+    SignatoryEventType:
+      type: string
+      enum:
+        - signatory.created
+        - signatory.updated
+        - signatory.deleted
+        - signatory.marked_for_invite
+
+    TimeOffRequestEventType:
+      type: string
+      enum:
+        - time_off_request.created
+        - time_off_request.updated
+        - time_off_request.deleted
+
+  messages:
+    BankAccountEvent:
+      name: BankAccountEvent
+      title: Bank Account Event
+      summary: State change on a BankAccount resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/BankAccountEventType'
+              resource_type:
+                type: string
+                enum: [BankAccount]
+
+    CompanyEvent:
+      name: CompanyEvent
+      title: Company Event
+      summary: State change on a Company resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/CompanyEventType'
+              resource_type:
+                type: string
+                enum: [Company]
+
+    CompanyBenefitEvent:
+      name: CompanyBenefitEvent
+      title: Company Benefit Event
+      summary: State change on a CompanyBenefit resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/CompanyBenefitEventType'
+              resource_type:
+                type: string
+                enum: [CompanyBenefit]
+
+    ContractorEvent:
+      name: ContractorEvent
+      title: Contractor Event
+      summary: State change on a Contractor resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/ContractorEventType'
+              resource_type:
+                type: string
+                enum: [Contractor]
+
+    ContractorPaymentEvent:
+      name: ContractorPaymentEvent
+      title: Contractor Payment Event
+      summary: State change on a ContractorPayment resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/ContractorPaymentEventType'
+              resource_type:
+                type: string
+                enum: [ContractorPayment]
+
+    ContractorPaymentGroupEvent:
+      name: ContractorPaymentGroupEvent
+      title: Contractor Payment Group Event
+      summary: State change on a ContractorPaymentGroup resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/ContractorPaymentGroupEventType'
+              resource_type:
+                type: string
+                enum: [ContractorPaymentGroup]
+
+    DocumentEvent:
+      name: DocumentEvent
+      title: Document Event
+      summary: State change on a Document resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/DocumentEventType'
+              resource_type:
+                type: string
+                enum: [Document]
+
+    EmployeeEvent:
+      name: EmployeeEvent
+      title: Employee Event
+      summary: State change on an Employee resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/EmployeeEventType'
+              resource_type:
+                type: string
+                enum: [Employee]
+
+    HomeAddressEvent:
+      name: HomeAddressEvent
+      title: Home Address Event
+      summary: State change on an Employee HomeAddress resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/HomeAddressEventType'
+              resource_type:
+                type: string
+                enum: [HomeAddress]
+
+    WorkAddressEvent:
+      name: WorkAddressEvent
+      title: Work Address Event
+      summary: State change on an Employee WorkAddress resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/WorkAddressEventType'
+              resource_type:
+                type: string
+                enum: [WorkAddress]
+
+    EmployeeBenefitEvent:
+      name: EmployeeBenefitEvent
+      title: Employee Benefit Event
+      summary: State change on an EmployeeBenefit resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/EmployeeBenefitEventType'
+              resource_type:
+                type: string
+                enum: [EmployeeBenefit]
+
+    EmployeeJobCompensationEvent:
+      name: EmployeeJobCompensationEvent
+      title: Employee Job Compensation Event
+      summary: State change on an EmployeeJobCompensation resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/EmployeeJobCompensationEventType'
+              resource_type:
+                type: string
+                enum: [EmployeeJobCompensation]
+
+    ExternalPayrollEvent:
+      name: ExternalPayrollEvent
+      title: External Payroll Event
+      summary: State change on an ExternalPayroll resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/ExternalPayrollEventType'
+              resource_type:
+                type: string
+                enum: [ExternalPayroll]
+
+    FastAchConfigEvent:
+      name: FastAchConfigEvent
+      title: Fast ACH Config Event
+      summary: State change on a FastAchConfig resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/FastAchConfigEventType'
+              resource_type:
+                type: string
+                enum: [FastAchConfig]
+
+    FormEvent:
+      name: FormEvent
+      title: Form Event
+      summary: State change on a Form resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/FormEventType'
+              resource_type:
+                type: string
+                enum: [Form]
+
+    GeneratedDocumentEvent:
+      name: GeneratedDocumentEvent
+      title: Generated Document Event
+      summary: State change on a GeneratedDocument resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/GeneratedDocumentEventType'
+              resource_type:
+                type: string
+                enum: [GeneratedDocument]
+
+    LocationEvent:
+      name: LocationEvent
+      title: Location Event
+      summary: State change on a Location resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/LocationEventType'
+              resource_type:
+                type: string
+                enum: [Location]
+
+    NotificationEvent:
+      name: NotificationEvent
+      title: Notification Event
+      summary: State change on a Notifications resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/NotificationEventType'
+              resource_type:
+                type: string
+                enum: [Notifications]
+
+    PayrollEvent:
+      name: PayrollEvent
+      title: Payroll Event
+      summary: State change on a Payroll resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/PayrollEventType'
+              resource_type:
+                type: string
+                enum: [Payroll]
+
+    PayScheduleEvent:
+      name: PayScheduleEvent
+      title: Pay Schedule Event
+      summary: State change on a PaySchedule resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/PayScheduleEventType'
+              resource_type:
+                type: string
+                enum: [PaySchedule]
+
+    SignatoryEvent:
+      name: SignatoryEvent
+      title: Signatory Event
+      summary: State change on a Signatory resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/SignatoryEventType'
+              resource_type:
+                type: string
+                enum: [Signatory]
+
+    TimeOffRequestEvent:
+      name: TimeOffRequestEvent
+      title: Time Off Request Event
+      summary: State change on a TimeOffRequest resource.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/GustoSignedDelivery'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/EventEnvelope'
+          - type: object
+            properties:
+              event_type:
+                $ref: '#/components/schemas/TimeOffRequestEventType'
+              resource_type:
+                type: string
+                enum: [TimeOffRequest]
