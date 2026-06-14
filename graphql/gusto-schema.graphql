@@ -1,0 +1,911 @@
+# Gusto Embedded Payroll API - Conceptual GraphQL Schema
+# Source: https://docs.gusto.com/embedded-payroll
+# GitHub: https://github.com/Gusto-Inc
+# Note: Gusto exposes a REST API. This schema represents the domain model
+# as a GraphQL type system for graph-based exploration.
+
+# ─────────────────────────────────────────────
+# Enums
+# ─────────────────────────────────────────────
+
+enum StateCode {
+  AL
+  AK
+  AZ
+  AR
+  CA
+  CO
+  CT
+  DE
+  FL
+  GA
+  HI
+  ID
+  IL
+  IN
+  IA
+  KS
+  KY
+  LA
+  ME
+  MD
+  MA
+  MI
+  MN
+  MS
+  MO
+  MT
+  NE
+  NV
+  NH
+  NJ
+  NM
+  NY
+  NC
+  ND
+  OH
+  OK
+  OR
+  PA
+  RI
+  SC
+  SD
+  TN
+  TX
+  UT
+  VT
+  VA
+  WA
+  WV
+  WI
+  WY
+  DC
+}
+
+enum FilingStatus {
+  SINGLE
+  MARRIED
+  MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE
+  HEAD_OF_HOUSEHOLD
+}
+
+enum ExemptionStatus {
+  EXEMPT
+  NOT_EXEMPT
+}
+
+enum BenefitType {
+  MEDICAL
+  DENTAL
+  VISION
+  HSA
+  FSA
+  DEPENDENT_CARE_FSA
+  COMMUTER
+  LIFE_INSURANCE
+  SHORT_TERM_DISABILITY
+  LONG_TERM_DISABILITY
+  SIMPLE_IRA
+  K_401
+  ROTH_401K
+  OTHER
+}
+
+enum PaymentMethodType {
+  DIRECT_DEPOSIT
+  CHECK
+}
+
+enum SignerRoleType {
+  COMPANY_SIGNATORY
+  PARTNER
+  AUTHORIZED_SIGNER
+}
+
+enum ContractorType {
+  INDIVIDUAL
+  BUSINESS
+}
+
+enum PaymentUnitType {
+  HOUR
+  WEEK
+  MONTH
+  YEAR
+  PAYCHECK
+  FIXED
+}
+
+enum CompensationType {
+  HOURLY
+  SALARY
+}
+
+# ─────────────────────────────────────────────
+# Company
+# ─────────────────────────────────────────────
+
+type Company {
+  id: ID!
+  uuid: String!
+  name: String!
+  tradeName: String
+  ein: String
+  entityType: String
+  companyStatus: String
+  tier: String
+  isPartner: Boolean
+  locations: [CompanyLocation!]
+  departments: [Department!]
+  benefits: [CompanyBenefit!]
+  signers: [Signer!]
+  employees: [Employee!]
+  contractors: [Contractor!]
+  payrolls: [Payroll!]
+  workerCompPolicies: [WorkerComp!]
+  createdAt: String
+  updatedAt: String
+}
+
+type CompanyLocation {
+  id: ID!
+  uuid: String!
+  company: Company!
+  phone: String
+  street1: String
+  street2: String
+  city: String
+  state: StateCode
+  zip: String
+  country: String
+  active: Boolean
+  filingAddress: Boolean
+  mailingAddress: Boolean
+}
+
+type Department {
+  id: ID!
+  uuid: String!
+  company: Company!
+  title: String!
+  version: String
+  employees: [Employee!]
+  contractors: [Contractor!]
+}
+
+type Location {
+  id: ID!
+  uuid: String!
+  street1: String
+  street2: String
+  city: String
+  state: StateCode
+  zip: String
+  country: String
+}
+
+type Signer {
+  id: ID!
+  uuid: String!
+  company: Company!
+  firstName: String
+  lastName: String
+  email: String
+  role: SignerRole
+  hasSigned: Boolean
+  electronicSignature: ElectronicSignature
+}
+
+type SignerRole {
+  id: ID!
+  name: SignerRoleType!
+  description: String
+}
+
+type ElectronicSignature {
+  id: ID!
+  signatureDate: String
+  ipAddress: String
+  agreed: Boolean
+}
+
+# ─────────────────────────────────────────────
+# Employee
+# ─────────────────────────────────────────────
+
+type Employee {
+  id: ID!
+  uuid: String!
+  company: Company!
+  firstName: String!
+  lastName: String!
+  middleInitial: String
+  preferredFirstName: String
+  email: String
+  dateOfBirth: String
+  ssn: String
+  twoPercentShareholder: Boolean
+  onboarded: Boolean
+  department: Department
+  address: EmployeeAddress
+  jobs: [EmployeeJob!]
+  compensations: [EmployeeCompensation!]
+  stateTaxes: [EmployeeStateTax!]
+  federalTax: EmployeeFederalTax
+  directDeposits: [DirectDeposit!]
+  paymentMethod: PaymentMethod
+  benefitCoverages: [BenefitCoverage!]
+  timeOffBalances: [TimeOffBalance!]
+  payrolls: [EmployeePayroll!]
+  termination: Termination
+  createdAt: String
+  updatedAt: String
+}
+
+type EmployeeAddress {
+  id: ID!
+  employee: Employee!
+  street1: String
+  street2: String
+  city: String
+  state: StateCode
+  zip: String
+  country: String
+  active: Boolean
+  effectiveDate: String
+}
+
+type EmployeeJob {
+  id: ID!
+  uuid: String!
+  employee: Employee!
+  title: String
+  location: CompanyLocation
+  hireDate: String
+  isPrimary: Boolean
+  compensations: [EmployeeCompensation!]
+  currentCompensation: EmployeeCompensation
+  rate: String
+  paymentUnit: PaymentUnitType
+}
+
+type EmployeeCompensation {
+  id: ID!
+  uuid: String!
+  employeeJob: EmployeeJob!
+  version: String
+  paymentUnit: PaymentUnitType!
+  flsaStatus: String
+  rate: String
+  adjustForMinimumWage: Boolean
+  effectiveDate: String
+}
+
+type EmployeeStateTax {
+  id: ID!
+  employee: Employee!
+  state: StateCode!
+  w4DataType: String
+  questions: [TaxQuestion]
+  filingStatus: FilingStatus
+  exemptions: Int
+  additionalWithholding: String
+  extraWithholding: String
+  version: String
+}
+
+type EmployeeFederalTax {
+  id: ID!
+  employee: Employee!
+  version: String
+  filingStatus: FilingStatus
+  allowances: Int
+  extraWithholding: String
+  twoJobs: Boolean
+  dependentsAmount: String
+  otherIncome: String
+  deductions: String
+  w4DataType: String
+}
+
+type TaxQuestion {
+  key: String
+  label: String
+  description: String
+  answerType: String
+  answer: String
+}
+
+type TerminatedEmployee {
+  id: ID!
+  uuid: String!
+  employee: Employee!
+  active: Boolean
+  terminated: Boolean
+  terminationDate: String
+}
+
+type Termination {
+  id: ID!
+  employee: Employee!
+  active: Boolean
+  privateTermination: Boolean
+  runTerminationPayroll: Boolean
+  effectiveDate: String
+  cancelAtEnd: Boolean
+}
+
+# ─────────────────────────────────────────────
+# Contractor
+# ─────────────────────────────────────────────
+
+type Contractor {
+  id: ID!
+  uuid: String!
+  company: Company!
+  type: ContractorType!
+  firstName: String
+  lastName: String
+  businessName: String
+  email: String
+  ssn: String
+  ein: String
+  onboarded: Boolean
+  department: Department
+  startDate: String
+  selfOnboarding: Boolean
+  address: Location
+  hourlyRate: String
+  wageType: String
+  createdAt: String
+  updatedAt: String
+}
+
+# ─────────────────────────────────────────────
+# Payroll
+# ─────────────────────────────────────────────
+
+type Payroll {
+  id: ID!
+  uuid: String!
+  company: Company!
+  version: String
+  payrollDeadline: String
+  checkDate: String
+  processed: Boolean
+  processedDate: String
+  calculatedAt: String
+  payPeriod: PayrollPayPeriod!
+  payScheduleUuid: String
+  fixedCompensations: [FixedCompensation!]
+  hourlyCompensations: [HourlyCompensation!]
+  paymentSpeedChanged: Boolean
+  offCycle: Boolean
+  offCycleReason: String
+  employeePayrolls: [EmployeePayroll!]
+  totals: EarningsTotal
+}
+
+type PayrollPayPeriod {
+  payScheduleUuid: String
+  startDate: String!
+  endDate: String!
+}
+
+type PayPeriod {
+  startDate: String!
+  endDate: String!
+  checkDate: String
+  payScheduleUuid: String
+  runnable: Boolean
+}
+
+type EmployeePayroll {
+  id: ID!
+  employee: Employee!
+  payroll: Payroll!
+  included: Boolean
+  excludedReasons: [String]
+  fixedCompensations: [FixedCompensation!]
+  hourlyCompensations: [HourlyCompensation!]
+  paidTimeOff: [TimeOff!]
+  benefitDeductions: [BenefitDeduction!]
+  garnishments: [GarnishmentDeduction!]
+  taxes: [Taxes!]
+  netPay: String
+  grossPay: String
+  checkAmount: String
+  paymentMethod: PaymentMethod
+}
+
+type PayrollDeduction {
+  id: ID!
+  name: String!
+  amount: String
+  percentage: String
+  recurring: Boolean
+  annualMaximum: String
+  companyContributionAnnualMaximum: String
+  catchUp: Boolean
+  description: String
+}
+
+type EarningsTotal {
+  grossPay: String
+  netPay: String
+  checkAmount: String
+  employerTaxes: String
+  employeeTaxes: String
+  benefits: String
+  deferredPayrollTaxes: String
+  reimbursements: String
+}
+
+type CheckDate {
+  checkDate: String!
+  payrollDeadline: String
+  bankHoliday: Boolean
+}
+
+type Check {
+  id: ID!
+  uuid: String!
+  employee: Employee!
+  payroll: Payroll!
+  checkDate: String
+  checkNumber: String
+  amount: String
+  memo: String
+  voided: Boolean
+}
+
+type PayStub {
+  id: ID!
+  employee: Employee!
+  payroll: Payroll!
+  grossPay: String
+  netPay: String
+  checkAmount: String
+  checkDate: String
+  payPeriodStartDate: String
+  payPeriodEndDate: String
+  taxes: [Taxes!]
+  deductions: [PayrollDeduction!]
+  benefits: [BenefitDeduction!]
+  earnings: [EarningType!]
+  url: String
+}
+
+# ─────────────────────────────────────────────
+# Compensation / Earnings
+# ─────────────────────────────────────────────
+
+type EarningType {
+  id: ID!
+  name: String!
+  category: String
+  isDefaultEarning: Boolean
+  customEarningType: Boolean
+}
+
+type FixedCompensation {
+  name: String!
+  amount: String
+  jobUuid: String
+}
+
+type HourlyCompensation {
+  name: String!
+  hours: String
+  jobUuid: String
+  compensationMultiplier: Float
+}
+
+type Bonus {
+  id: ID!
+  employee: Employee!
+  company: Company!
+  amount: String!
+  payDate: String!
+  onPayroll: Boolean
+  checkDate: String
+  includedInRegularPayroll: Boolean
+}
+
+# ─────────────────────────────────────────────
+# Benefits
+# ─────────────────────────────────────────────
+
+type CompanyBenefit {
+  id: ID!
+  uuid: String!
+  company: Company!
+  benefitType: BenefitType!
+  active: Boolean
+  description: String
+  supportsPercentContributions: Boolean
+  employeeContribution: CompanyBenefitContribution
+  companyContribution: CompanyBenefitContribution
+  coverages: [BenefitCoverage!]
+}
+
+type CompanyBenefitContribution {
+  type: String
+  value: String
+}
+
+type BenefitCoverage {
+  id: ID!
+  employee: Employee!
+  companyBenefit: CompanyBenefit!
+  active: Boolean
+  enrollDate: String
+  terminationDate: String
+  employeeDeduction: String
+  companyContribution: String
+  employeeDeductionAnnualMaximum: String
+  companyContributionAnnualMaximum: String
+  coverageType: String
+  deductionReducesTaxableIncome: Boolean
+}
+
+type BenefitDeduction {
+  name: String!
+  employeeDeduction: String
+  companyContribution: String
+  imputed: Boolean
+}
+
+# ─────────────────────────────────────────────
+# Deductions
+# ─────────────────────────────────────────────
+
+type GarnishmentDeduction {
+  id: ID!
+  employee: Employee!
+  active: Boolean
+  description: String
+  amount: String
+  court: String
+  caseNumber: String
+  childSupport: Boolean
+  deductAsPercentage: Boolean
+  recurring: Boolean
+  annualMaximum: String
+  times: Int
+  deductionReducesTaxableIncome: Boolean
+}
+
+# ─────────────────────────────────────────────
+# Tax
+# ─────────────────────────────────────────────
+
+type Taxes {
+  name: String!
+  employer: Boolean
+  amount: String
+  rate: String
+}
+
+type TaxLiability {
+  id: ID!
+  company: Company!
+  name: String
+  state: StateCode
+  amount: String
+  paymentDueDate: String
+  periodStartDate: String
+  periodEndDate: String
+}
+
+type TaxRate {
+  id: ID!
+  state: StateCode
+  name: String!
+  rate: String!
+  employer: Boolean
+  periodStartDate: String
+  periodEndDate: String
+}
+
+# ─────────────────────────────────────────────
+# Banking / Payment
+# ─────────────────────────────────────────────
+
+type BankAccount {
+  id: ID!
+  uuid: String!
+  company: Company
+  employee: Employee
+  routingNumber: String
+  accountNumber: String
+  accountType: String
+  name: String
+  verificationStatus: String
+  hidden: Boolean
+}
+
+type DirectDeposit {
+  id: ID!
+  uuid: String!
+  employee: Employee!
+  bankAccount: BankAccount
+  priority: Int
+  splitByPercentage: Boolean
+  amount: String
+  percent: String
+}
+
+type PaymentMethod {
+  id: ID!
+  employee: Employee!
+  type: PaymentMethodType!
+  bankAccount: BankAccount
+  splits: [DirectDeposit!]
+}
+
+# ─────────────────────────────────────────────
+# Time Off
+# ─────────────────────────────────────────────
+
+type TimeOffPolicy {
+  id: ID!
+  uuid: String!
+  company: Company!
+  name: String!
+  policyType: String
+  accrualMethod: String
+  accrualRate: String
+  accrualRateUnit: String
+  accrualPeriod: String
+  accrualBalance: String
+  maxAccrualBalance: String
+  paidOutOnTermination: Boolean
+  employees: [Employee!]
+}
+
+type TimeOffBalance {
+  id: ID!
+  employee: Employee!
+  policy: TimeOffPolicy
+  policyName: String
+  policyType: String
+  balance: String
+  usedHours: String
+  accrualPeriod: String
+  accrualedHours: String
+}
+
+type TimeOffAccrual {
+  id: ID!
+  employee: Employee!
+  policy: TimeOffPolicy
+  accruedHours: String
+  accrualDate: String
+  description: String
+}
+
+type TimeOff {
+  id: ID!
+  employee: Employee!
+  policyName: String
+  policyUuid: String
+  hours: String
+}
+
+# ─────────────────────────────────────────────
+# Workers Comp
+# ─────────────────────────────────────────────
+
+type WorkerComp {
+  id: ID!
+  uuid: String!
+  company: Company!
+  code: String!
+  name: String
+  state: StateCode
+  rateOverride: String
+  classes: [WorkerCompClass!]
+}
+
+type WorkerCompClass {
+  id: ID!
+  uuid: String!
+  workerComp: WorkerComp!
+  classCode: String!
+  classDescription: String
+  rateOverride: String
+  employees: [Employee!]
+}
+
+# ─────────────────────────────────────────────
+# Input Types
+# ─────────────────────────────────────────────
+
+input CompanyInput {
+  name: String!
+  tradeName: String
+  ein: String
+  entityType: String
+}
+
+input EmployeeInput {
+  firstName: String!
+  lastName: String!
+  email: String
+  dateOfBirth: String
+  startDate: String
+  departmentUuid: String
+}
+
+input ContractorInput {
+  type: ContractorType!
+  firstName: String
+  lastName: String
+  businessName: String
+  email: String
+  startDate: String
+}
+
+input PayrollInput {
+  payPeriodStartDate: String!
+  payPeriodEndDate: String!
+  offCycle: Boolean
+  offCycleReason: String
+}
+
+input BenefitInput {
+  benefitType: BenefitType!
+  description: String
+  active: Boolean
+}
+
+input TimeOffInput {
+  policyUuid: String!
+  hours: String!
+  date: String
+}
+
+input BankAccountInput {
+  routingNumber: String!
+  accountNumber: String!
+  accountType: String!
+  name: String
+}
+
+input DirectDepositInput {
+  bankAccountUuid: String!
+  priority: Int
+  splitByPercentage: Boolean
+  amount: String
+  percent: String
+}
+
+input TaxElectionInput {
+  filingStatus: FilingStatus
+  allowances: Int
+  extraWithholding: String
+}
+
+input CompensationInput {
+  rate: String!
+  paymentUnit: PaymentUnitType!
+  flsaStatus: String
+  effectiveDate: String
+}
+
+input TerminationInput {
+  effectiveDate: String!
+  runTerminationPayroll: Boolean
+  privateTermination: Boolean
+}
+
+input BonusInput {
+  amount: String!
+  payDate: String!
+  onPayroll: Boolean
+  includedInRegularPayroll: Boolean
+}
+
+input DepartmentInput {
+  title: String!
+}
+
+# ─────────────────────────────────────────────
+# Root Query
+# ─────────────────────────────────────────────
+
+type Query {
+  company(uuid: ID!): Company
+  companies: [Company!]
+
+  employee(uuid: ID!): Employee
+  employees(companyUuid: ID!): [Employee!]
+
+  terminatedEmployees(companyUuid: ID!): [TerminatedEmployee!]
+
+  contractor(uuid: ID!): Contractor
+  contractors(companyUuid: ID!): [Contractor!]
+
+  payroll(uuid: ID!): Payroll
+  payrolls(companyUuid: ID!, processed: Boolean, startDate: String, endDate: String): [Payroll!]
+
+  payPeriods(companyUuid: ID!, startDate: String, endDate: String): [PayPeriod!]
+
+  payStub(payrollUuid: ID!, employeeUuid: ID!): PayStub
+  payStubs(employeeUuid: ID!): [PayStub!]
+
+  companyBenefit(uuid: ID!): CompanyBenefit
+  companyBenefits(companyUuid: ID!): [CompanyBenefit!]
+
+  employeeBenefits(employeeUuid: ID!): [BenefitCoverage!]
+
+  timeOffPolicies(companyUuid: ID!): [TimeOffPolicy!]
+  timeOffBalances(employeeUuid: ID!): [TimeOffBalance!]
+
+  department(uuid: ID!): Department
+  departments(companyUuid: ID!): [Department!]
+
+  companyLocation(uuid: ID!): CompanyLocation
+  companyLocations(companyUuid: ID!): [CompanyLocation!]
+
+  bankAccounts(companyUuid: ID): [BankAccount!]
+  employeeBankAccounts(employeeUuid: ID!): [BankAccount!]
+  directDeposits(employeeUuid: ID!): [DirectDeposit!]
+  paymentMethod(employeeUuid: ID!): PaymentMethod
+
+  workerCompPolicies(companyUuid: ID!): [WorkerComp!]
+
+  taxLiabilities(companyUuid: ID!, startDate: String, endDate: String): [TaxLiability!]
+  taxRates(state: StateCode): [TaxRate!]
+
+  earningTypes(companyUuid: ID!): [EarningType!]
+
+  garnishments(employeeUuid: ID!): [GarnishmentDeduction!]
+
+  signers(companyUuid: ID!): [Signer!]
+
+  checkDates(companyUuid: ID!, startDate: String!, endDate: String!): [CheckDate!]
+}
+
+# ─────────────────────────────────────────────
+# Root Mutation
+# ─────────────────────────────────────────────
+
+type Mutation {
+  createEmployee(companyUuid: ID!, input: EmployeeInput!): Employee
+  updateEmployee(uuid: ID!, input: EmployeeInput!): Employee
+
+  createContractor(companyUuid: ID!, input: ContractorInput!): Contractor
+  updateContractor(uuid: ID!, input: ContractorInput!): Contractor
+
+  terminateEmployee(employeeUuid: ID!, input: TerminationInput!): Termination
+
+  createPayroll(companyUuid: ID!, input: PayrollInput!): Payroll
+  calculatePayroll(uuid: ID!): Payroll
+  submitPayroll(uuid: ID!): Payroll
+
+  createCompanyBenefit(companyUuid: ID!, input: BenefitInput!): CompanyBenefit
+  updateCompanyBenefit(uuid: ID!, input: BenefitInput!): CompanyBenefit
+
+  enrollEmployeeBenefit(employeeUuid: ID!, companyBenefitUuid: ID!, employeeDeduction: String, companyContribution: String): BenefitCoverage
+
+  addBankAccount(companyUuid: ID, employeeUuid: ID, input: BankAccountInput!): BankAccount
+  addDirectDeposit(employeeUuid: ID!, input: DirectDepositInput!): DirectDeposit
+  updatePaymentMethod(employeeUuid: ID!, type: PaymentMethodType!): PaymentMethod
+
+  updateFederalTax(employeeUuid: ID!, input: TaxElectionInput!): EmployeeFederalTax
+  updateStateTax(employeeUuid: ID!, state: StateCode!, input: TaxElectionInput!): EmployeeStateTax
+
+  updateCompensation(jobUuid: ID!, input: CompensationInput!): EmployeeCompensation
+
+  createDepartment(companyUuid: ID!, input: DepartmentInput!): Department
+  updateDepartment(uuid: ID!, input: DepartmentInput!): Department
+
+  addEmployeeToTimeOffPolicy(policyUuid: ID!, employeeUuid: ID!): TimeOffPolicy
+  adjustTimeOffBalance(employeeUuid: ID!, input: TimeOffInput!): TimeOffBalance
+
+  createBonus(employeeUuid: ID!, input: BonusInput!): Bonus
+
+  addGarnishment(employeeUuid: ID!, description: String!, amount: String!, court: String, caseNumber: String, childSupport: Boolean): GarnishmentDeduction
+}
