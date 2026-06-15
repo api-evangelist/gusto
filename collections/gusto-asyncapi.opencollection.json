@@ -1,0 +1,9 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gusto Embedded Payroll Webhooks",
+    "version": "1.0.0"
+  },
+  "items": [],
+  "bundled": true
+}

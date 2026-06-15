@@ -1,0 +1,538 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gusto Embedded Payroll API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve company information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies"
+          },
+          "docs": "Retrieve company information"
+        },
+        {
+          "info": {
+            "name": "Create partner-managed company",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/partner-managed-companies"
+          },
+          "docs": "Create partner-managed company"
+        },
+        {
+          "info": {
+            "name": "Update company details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update company details"
+        },
+        {
+          "info": {
+            "name": "Get federal tax configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies/:company_id/federal_tax_details",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get federal tax configuration"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contractors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List contractors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies/:company_uuid/contractors",
+            "params": [
+              {
+                "name": "company_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List contractors"
+        },
+        {
+          "info": {
+            "name": "Create contractor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_uuid/contractors",
+            "params": [
+              {
+                "name": "company_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create contractor"
+        },
+        {
+          "info": {
+            "name": "Update contractor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/contractors/:contractor_uuid",
+            "params": [
+              {
+                "name": "contractor_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update contractor"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Employees",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create salary estimate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/employees/:employee_id/salary_estimates",
+            "params": [
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create salary estimate"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payrolls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payrolls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies/:company_id/payrolls",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List payrolls"
+        },
+        {
+          "info": {
+            "name": "Create off-cycle payroll",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_id/payrolls",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create off-cycle payroll"
+        },
+        {
+          "info": {
+            "name": "Submit payroll",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/companies/:company_id/payrolls/:payroll_id/submit",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "payroll_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Submit payroll"
+        },
+        {
+          "info": {
+            "name": "Calculate payroll taxes and benefits",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/companies/:company_id/payrolls/:payroll_id/calculate",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "payroll_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Calculate payroll taxes and benefits"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ContractorPayments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List contractor payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies/:company_id/contractor_payments",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List contractor payments"
+        },
+        {
+          "info": {
+            "name": "Pay contractor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_id/contractor_payments",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Pay contractor"
+        },
+        {
+          "info": {
+            "name": "Create contractor payment group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_id/contractor_payment_groups",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create contractor payment group"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "BankAccounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create bank account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_id/bank-accounts",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create bank account"
+        },
+        {
+          "info": {
+            "name": "Verify bank account deposits",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/companies/:company_id/bank-accounts/verify",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Verify bank account deposits"
+        },
+        {
+          "info": {
+            "name": "Disable bank account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gusto.com/v1/companies/:company_id/bank-accounts/:bank_account_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bank_account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable bank account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PaySchedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List pay schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies/:company_id/pay_schedules",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List pay schedules"
+        },
+        {
+          "info": {
+            "name": "Create pay schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_id/pay_schedules",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create pay schedule"
+        },
+        {
+          "info": {
+            "name": "Update pay schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/companies/:company_id/pay_schedules/:pay_schedule_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pay_schedule_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update pay schedule"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate flow link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/company/flows"
+          },
+          "docs": "Returns a flow link that expires in 1 hour."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create custom report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_uuid/reports",
+            "params": [
+              {
+                "name": "company_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create custom report"
+        },
+        {
+          "info": {
+            "name": "Retrieve report status and URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/reports/:request_uuid",
+            "params": [
+              {
+                "name": "request_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve report status and URL"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch webhook events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/events"
+          },
+          "docs": "Returns events from the last 30 days."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
