@@ -3,13 +3,10 @@
   "feeds": [
     {
       "source": "https://gusto.com/blog",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://support.gusto.com/",
-      "error": "HTTPError"
+      "saved": 0,
+      "error": "HTTP 403 Forbidden on blog and /resources"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:45:22Z",
+  "post_count": 0
 }

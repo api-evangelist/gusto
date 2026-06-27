@@ -69,7 +69,7 @@ apis:
   properties:
   - type: SourceCode
     url: https://github.com/Gusto/embedded-react-sdk
-  - type: SDK
+  - type: SDKs
     url: https://www.npmjs.com/package/@gusto/embedded-react-sdk
   - type: Documentation
     url: https://docs.gusto.com/embedded-payroll/docs/react-sdk
@@ -86,15 +86,15 @@ common:
   url: https://gusto.com/embedded-payroll
 - type: SourceCode
   url: https://github.com/Gusto
-- type: SDK
+- type: SDKs
   url: https://github.com/Gusto/gusto-python-client
-- type: SDK
+- type: SDKs
   url: https://github.com/Gusto/gusto-typescript-client
-- type: SDK
+- type: SDKs
   url: https://github.com/Gusto/gusto-ruby-client
-- type: SDK
+- type: SDKs
   url: https://github.com/Gusto/gusto-java-client
-- type: SDK
+- type: SDKs
   url: https://github.com/Gusto/gusto-csharp-client
 - type: PrivacyPolicy
   url: https://gusto.com/about/privacy
@@ -106,5 +106,5 @@ common:
   url: https://gusto.com/blog
 - type: Login
   url: https://app.gusto.com/login
-- type: LLMsTxt
+- type: LlmsText
   url: https://docs.gusto.com/llms.txt
