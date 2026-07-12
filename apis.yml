@@ -74,6 +74,14 @@ apis:
   - type: Documentation
     url: https://docs.gusto.com/embedded-payroll/docs/react-sdk
 common:
+- type: TrustCenter
+  url: security/gusto-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/gusto-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/gusto-domain-security.yml
+- type: Authentication
+  url: authentication/gusto-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/gustohq
 - type: Website

@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://gusto.com/security
+url: https://gusto.com/security
+certifications:
+- SOC 2
+- HIPAA
+evidence:
+- source: https://gusto.com/security
+  keywords:
+  - soc 2
+  - hipaa
+  - trust center

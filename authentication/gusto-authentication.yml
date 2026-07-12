@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/gusto-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: |-
+    OAuth 2.0 access token for company-level access or system-level bearer
+    token for partner operations. Scopes such as payrolls:read, payrolls:run,
+    contractors:write provide fine-grained permissions.
+  sources:
+  - openapi/gusto-openapi.yml
