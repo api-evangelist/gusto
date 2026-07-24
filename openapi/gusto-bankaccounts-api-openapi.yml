@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Gusto Embedded Payroll BankAccounts API
+  version: 1.0.0
+  description: 'REST API for embedding Gusto''s payroll, tax filing, and HR workflows into
+
+    third-party platforms. Supports companies, contractors, employees,
+
+    payrolls, contractor payments, bank accounts, pay schedules, flows,
+
+    reports, and webhook events. Date-based API versioning. Authentication is
+
+    via OAuth 2.0 for company-level access or a system-level bearer token for
+
+    partner operations, with fine-grained scopes.
+
+    '
+  contact:
+    name: Gusto Developer Documentation
+    url: https://docs.gusto.com/embedded-payroll
+servers:
+- url: https://api.gusto.com
+  description: Gusto production API
+security:
+- bearerAuth: []
+tags:
+- name: BankAccounts
+paths:
+  /v1/companies/{company_id}/bank-accounts:
+    post:
+      summary: Create bank account
+      operationId: createBankAccount
+      tags:
+      - BankAccounts
+      parameters:
+      - in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Bank account created.
+  /v1/companies/{company_id}/bank-accounts/verify:
+    put:
+      summary: Verify bank account deposits
+      operationId: verifyBankAccount
+      tags:
+      - BankAccounts
+      parameters:
+      - in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Bank account verified.
+  /v1/companies/{company_id}/bank-accounts/{bank_account_id}:
+    delete:
+      summary: Disable bank account
+      operationId: deleteBankAccount
+      tags:
+      - BankAccounts
+      parameters:
+      - in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: bank_account_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Bank account disabled.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'OAuth 2.0 access token for company-level access or system-level bearer
+
+        token for partner operations. Scopes such as payrolls:read, payrolls:run,
+
+        contractors:write provide fine-grained permissions.
+
+        '

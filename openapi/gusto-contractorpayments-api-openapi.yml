@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: Gusto Embedded Payroll BankAccounts ContractorPayments API
+  version: 1.0.0
+  description: 'REST API for embedding Gusto''s payroll, tax filing, and HR workflows into
+
+    third-party platforms. Supports companies, contractors, employees,
+
+    payrolls, contractor payments, bank accounts, pay schedules, flows,
+
+    reports, and webhook events. Date-based API versioning. Authentication is
+
+    via OAuth 2.0 for company-level access or a system-level bearer token for
+
+    partner operations, with fine-grained scopes.
+
+    '
+  contact:
+    name: Gusto Developer Documentation
+    url: https://docs.gusto.com/embedded-payroll
+servers:
+- url: https://api.gusto.com
+  description: Gusto production API
+security:
+- bearerAuth: []
+tags:
+- name: ContractorPayments
+paths:
+  /v1/companies/{company_id}/contractor_payments:
+    get:
+      summary: List contractor payments
+      operationId: listContractorPayments
+      tags:
+      - ContractorPayments
+      parameters:
+      - in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of contractor payments.
+    post:
+      summary: Pay contractor
+      operationId: createContractorPayment
+      tags:
+      - ContractorPayments
+      parameters:
+      - in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Payment created.
+  /v1/companies/{company_id}/contractor_payment_groups:
+    post:
+      summary: Create contractor payment group
+      operationId: createContractorPaymentGroup
+      tags:
+      - ContractorPayments
+      parameters:
+      - in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Payment group created.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'OAuth 2.0 access token for company-level access or system-level bearer
+
+        token for partner operations. Scopes such as payrolls:read, payrolls:run,
+
+        contractors:write provide fine-grained permissions.
+
+        '

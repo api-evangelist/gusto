@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: Gusto Embedded Payroll BankAccounts Companies API
+  version: 1.0.0
+  description: 'REST API for embedding Gusto''s payroll, tax filing, and HR workflows into
+
+    third-party platforms. Supports companies, contractors, employees,
+
+    payrolls, contractor payments, bank accounts, pay schedules, flows,
+
+    reports, and webhook events. Date-based API versioning. Authentication is
+
+    via OAuth 2.0 for company-level access or a system-level bearer token for
+
+    partner operations, with fine-grained scopes.
+
+    '
+  contact:
+    name: Gusto Developer Documentation
+    url: https://docs.gusto.com/embedded-payroll
+servers:
+- url: https://api.gusto.com
+  description: Gusto production API
+security:
+- bearerAuth: []
+tags:
+- name: Companies
+paths:
+  /v1/companies:
+    get:
+      summary: Retrieve company information
+      operationId: listCompanies
+      tags:
+      - Companies
+      responses:
+        '200':
+          description: Company information.
+  /v1/partner-managed-companies:
+    post:
+      summary: Create partner-managed company
+      operationId: createPartnerManagedCompany
+      tags:
+      - Companies
+      responses:
+        '201':
+          description: Company created.
+  /v1/companies/{company_id}:
+    put:
+      summary: Update company details
+      operationId: updateCompany
+      tags:
+      - Companies
+      parameters:
+      - in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Company updated.
+  /v1/companies/{company_id}/federal_tax_details:
+    get:
+      summary: Get federal tax configuration
+      operationId: getFederalTaxDetails
+      tags:
+      - Companies
+      parameters:
+      - in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Federal tax configuration.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'OAuth 2.0 access token for company-level access or system-level bearer
+
+        token for partner operations. Scopes such as payrolls:read, payrolls:run,
+
+        contractors:write provide fine-grained permissions.
+
+        '
