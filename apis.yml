@@ -2,7 +2,19 @@ aid: gusto
 url: https://raw.githubusercontent.com/api-evangelist/gusto/refs/heads/main/apis.yml
 name: Gusto
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/gusto.png
 tags:
 - Human Resources
 - Payroll
@@ -31,13 +43,12 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.gusto.com/embedded-payroll
   baseURL: https://api.gusto.com
-  description: The Gusto Embedded Payroll API enables platforms to build and embed
-    modern payroll, benefits, and HR tooling into their own products. The API exposes
-    endpoints for company onboarding, employee and contractor management, payroll
-    runs, tax filings, benefits administration, ACH transactions, and compliance reporting.
-    Authentication uses OAuth 2.0; partners must complete commercial, security, and
-    implementation reviews with Gusto's partnerships team before moving from the demo
-    environment to production.
+  description: >-
+    The Gusto Embedded Payroll API enables platforms to build and embed modern payroll, benefits, and
+    HR tooling into their own products. The API exposes endpoints for company onboarding, employee and
+    contractor management, payroll runs, tax filings, benefits administration, ACH transactions, and compliance
+    reporting. Authentication uses OAuth 2.0; partners must complete commercial, security, and implementation
+    reviews with Gusto's partnerships team before moving from the demo environment to production.
   properties:
   - type: Documentation
     url: https://docs.gusto.com/embedded-payroll
@@ -46,7 +57,8 @@ apis:
   - type: Webhooks
     url: https://docs.gusto.com/embedded-payroll/docs/webhooks
   - type: AsyncAPI
-    url: https://raw.githubusercontent.com/api-evangelist/gusto/refs/heads/main/openapi/gusto-asyncapi.yml
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/gusto/refs/heads/main/openapi/gusto-asyncapi.yml
   - type: Authentication
     url: https://docs.gusto.com/embedded-payroll/docs/authentication
   - url: graphql/gusto-graphql.md
@@ -62,10 +74,10 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://github.com/Gusto/embedded-react-sdk
   baseURL: https://api.gusto.com
-  description: The Gusto Embedded React SDK provides pre-built UI flows and components
-    that platforms can drop into their own React applications to surface Gusto Embedded
-    Payroll experiences (company onboarding, employee onboarding, payroll runs, document
-    signing) without building custom UI against the underlying API.
+  description: >-
+    The Gusto Embedded React SDK provides pre-built UI flows and components that platforms can drop into
+    their own React applications to surface Gusto Embedded Payroll experiences (company onboarding, employee
+    onboarding, payroll runs, document signing) without building custom UI against the underlying API.
   properties:
   - type: SourceCode
     url: https://github.com/Gusto/embedded-react-sdk
@@ -73,6 +85,106 @@ apis:
     url: https://www.npmjs.com/package/@gusto/embedded-react-sdk
   - type: Documentation
     url: https://docs.gusto.com/embedded-payroll/docs/react-sdk
+- aid: gusto:gusto-bankaccounts-api
+  name: Gusto BankAccounts API
+  description: The BankAccounts API from Gusto — 3 operation(s) for bankaccounts.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - BankAccounts
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-bankaccounts-api-openapi.yml
+- aid: gusto:gusto-companies-api
+  name: Gusto Companies API
+  description: The Companies API from Gusto — 4 operation(s) for companies.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-companies-api-openapi.yml
+- aid: gusto:gusto-contractorpayments-api
+  name: Gusto ContractorPayments API
+  description: The ContractorPayments API from Gusto — 2 operation(s) for contractorpayments.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - ContractorPayments
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-contractorpayments-api-openapi.yml
+- aid: gusto:gusto-contractors-api
+  name: Gusto Contractors API
+  description: The Contractors API from Gusto — 2 operation(s) for contractors.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - Contractors
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-contractors-api-openapi.yml
+- aid: gusto:gusto-employees-api
+  name: Gusto Employees API
+  description: The Employees API from Gusto — 1 operation(s) for employees.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - Employees
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-employees-api-openapi.yml
+- aid: gusto:gusto-flows-api
+  name: Gusto Flows API
+  description: The Flows API from Gusto — 1 operation(s) for flows.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - Flows
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-flows-api-openapi.yml
+- aid: gusto:gusto-payrolls-api
+  name: Gusto Payrolls API
+  description: The Payrolls API from Gusto — 3 operation(s) for payrolls.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - Payrolls
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-payrolls-api-openapi.yml
+- aid: gusto:gusto-payschedules-api
+  name: Gusto PaySchedules API
+  description: The PaySchedules API from Gusto — 2 operation(s) for payschedules.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - PaySchedules
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-payschedules-api-openapi.yml
+- aid: gusto:gusto-reports-api
+  name: Gusto Reports API
+  description: The Reports API from Gusto — 2 operation(s) for reports.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-reports-api-openapi.yml
+- aid: gusto:gusto-webhooks-api
+  name: Gusto Webhooks API
+  description: The Webhooks API from Gusto — 1 operation(s) for webhooks.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-webhooks-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/gusto-agentic-access.yml
