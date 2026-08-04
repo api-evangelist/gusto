@@ -1,0 +1,32 @@
+{
+  "provider": "gusto",
+  "sources": [
+    "gusto-bankaccounts-api-openapi.yml",
+    "gusto-companies-api-openapi.yml",
+    "gusto-contractorpayments-api-openapi.yml",
+    "gusto-contractors-api-openapi.yml",
+    "gusto-employees-api-openapi.yml",
+    "gusto-flows-api-openapi.yml",
+    "gusto-payrolls-api-openapi.yml",
+    "gusto-payschedules-api-openapi.yml",
+    "gusto-reports-api-openapi.yml",
+    "gusto-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "gusto-bankaccounts-api-openapi.yml",
+    "gusto-companies-api-openapi.yml",
+    "gusto-contractorpayments-api-openapi.yml",
+    "gusto-contractors-api-openapi.yml",
+    "gusto-employees-api-openapi.yml",
+    "gusto-flows-api-openapi.yml",
+    "gusto-payrolls-api-openapi.yml",
+    "gusto-payschedules-api-openapi.yml",
+    "gusto-reports-api-openapi.yml",
+    "gusto-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
