@@ -1,0 +1,111 @@
+{
+  "item": [
+    {
+      "id": "8e3e0ab6-a9ea-49de-b174-6811d7ac4a4e",
+      "name": "Webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8c16ebd8-1aa8-447c-bb42-a3bdf951480b",
+          "name": "Fetch webhook events",
+          "request": {
+            "name": "Fetch webhook events",
+            "description": {
+              "content": "Returns events from the last 30 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a737353b-b45d-4534-a2cd-0374b774b069",
+              "name": "List of events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gusto.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "37914972-5219-43e7-8743-7f84baec01f3",
+    "name": "Gusto Embedded Payroll BankAccounts Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for embedding Gusto's payroll, tax filing, and HR workflows into\nthird-party platforms. Supports companies, contractors, employees,\npayrolls, contractor payments, bank accounts, pay schedules, flows,\nreports, and webhook events. Date-based API versioning. Authentication is\nvia OAuth 2.0 for company-level access or a system-level bearer token for\npartner operations, with fine-grained scopes.\n\n\nContact Support:\n Name: Gusto Developer Documentation",
+      "type": "text/plain"
+    }
+  }
+}

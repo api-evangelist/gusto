@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gusto Embedded Payroll BankAccounts Contractors API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contractors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List contractors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies/:company_uuid/contractors",
+            "params": [
+              {
+                "name": "company_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List contractors"
+        },
+        {
+          "info": {
+            "name": "Create contractor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_uuid/contractors",
+            "params": [
+              {
+                "name": "company_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create contractor"
+        },
+        {
+          "info": {
+            "name": "Update contractor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/contractors/:contractor_uuid",
+            "params": [
+              {
+                "name": "contractor_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update contractor"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

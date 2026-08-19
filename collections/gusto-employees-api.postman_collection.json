@@ -1,0 +1,128 @@
+{
+  "item": [
+    {
+      "id": "ff483e43-938b-4045-b7a3-4f9beb35f56f",
+      "name": "Employees",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2030ffda-0adb-44e1-abe2-1193be4ce06e",
+          "name": "Create salary estimate",
+          "request": {
+            "name": "Create salary estimate",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "employees",
+                ":employee_id",
+                "salary_estimates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "employee_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92199d03-c4dc-4f73-9fc9-6a5071a8659c",
+              "name": "Salary estimate created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "employees",
+                    ":employee_id",
+                    "salary_estimates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "employee_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gusto.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "56ab1469-da5d-4cde-9018-8c2575c5c1ad",
+    "name": "Gusto Embedded Payroll BankAccounts Employees API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for embedding Gusto's payroll, tax filing, and HR workflows into\nthird-party platforms. Supports companies, contractors, employees,\npayrolls, contractor payments, bank accounts, pay schedules, flows,\nreports, and webhook events. Date-based API versioning. Authentication is\nvia OAuth 2.0 for company-level access or a system-level bearer token for\npartner operations, with fine-grained scopes.\n\n\nContact Support:\n Name: Gusto Developer Documentation",
+      "type": "text/plain"
+    }
+  }
+}

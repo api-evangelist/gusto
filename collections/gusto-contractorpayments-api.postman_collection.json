@@ -1,0 +1,302 @@
+{
+  "item": [
+    {
+      "id": "ef27c9ce-c76f-4d74-bbc5-43070801de5d",
+      "name": "ContractorPayments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "777cc921-55b8-4e0b-b665-33d3787b60c0",
+          "name": "List contractor payments",
+          "request": {
+            "name": "List contractor payments",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "companies",
+                ":company_id",
+                "contractor_payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1625260-6a2a-4f44-92eb-c02e681302fb",
+              "name": "List of contractor payments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "companies",
+                    ":company_id",
+                    "contractor_payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "568c86b9-b2a4-42b3-877e-3e5db0a70ef9",
+          "name": "Pay contractor",
+          "request": {
+            "name": "Pay contractor",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "companies",
+                ":company_id",
+                "contractor_payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f2b9098-b5ea-40f5-83c5-abdae6647a7a",
+              "name": "Payment created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "companies",
+                    ":company_id",
+                    "contractor_payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23e02c40-e457-4b3b-ab72-95edea0e1ed3",
+          "name": "Create contractor payment group",
+          "request": {
+            "name": "Create contractor payment group",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "companies",
+                ":company_id",
+                "contractor_payment_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4baab629-442b-4d6b-aad7-c4626032dc1f",
+              "name": "Payment group created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "companies",
+                    ":company_id",
+                    "contractor_payment_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gusto.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6dcd043a-e5ae-491d-9b8d-1208a6552165",
+    "name": "Gusto Embedded Payroll BankAccounts ContractorPayments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for embedding Gusto's payroll, tax filing, and HR workflows into\nthird-party platforms. Supports companies, contractors, employees,\npayrolls, contractor payments, bank accounts, pay schedules, flows,\nreports, and webhook events. Date-based API versioning. Authentication is\nvia OAuth 2.0 for company-level access or a system-level bearer token for\npartner operations, with fine-grained scopes.\n\n\nContact Support:\n Name: Gusto Developer Documentation",
+      "type": "text/plain"
+    }
+  }
+}

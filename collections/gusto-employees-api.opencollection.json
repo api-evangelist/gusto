@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gusto Embedded Payroll BankAccounts Employees API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Employees",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create salary estimate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/employees/:employee_id/salary_estimates",
+            "params": [
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create salary estimate"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

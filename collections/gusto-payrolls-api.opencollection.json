@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gusto Embedded Payroll BankAccounts Payrolls API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payrolls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payrolls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies/:company_id/payrolls",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List payrolls"
+        },
+        {
+          "info": {
+            "name": "Create off-cycle payroll",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_id/payrolls",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create off-cycle payroll"
+        },
+        {
+          "info": {
+            "name": "Submit payroll",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/companies/:company_id/payrolls/:payroll_id/submit",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "payroll_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Submit payroll"
+        },
+        {
+          "info": {
+            "name": "Calculate payroll taxes and benefits",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/companies/:company_id/payrolls/:payroll_id/calculate",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "payroll_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Calculate payroll taxes and benefits"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

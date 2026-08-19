@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gusto Embedded Payroll BankAccounts Reports API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create custom report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_uuid/reports",
+            "params": [
+              {
+                "name": "company_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create custom report"
+        },
+        {
+          "info": {
+            "name": "Retrieve report status and URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/reports/:request_uuid",
+            "params": [
+              {
+                "name": "request_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve report status and URL"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

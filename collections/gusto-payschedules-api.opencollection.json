@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gusto Embedded Payroll BankAccounts PaySchedules API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PaySchedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List pay schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies/:company_id/pay_schedules",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List pay schedules"
+        },
+        {
+          "info": {
+            "name": "Create pay schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/companies/:company_id/pay_schedules",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create pay schedule"
+        },
+        {
+          "info": {
+            "name": "Update pay schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/companies/:company_id/pay_schedules/:pay_schedule_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pay_schedule_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update pay schedule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

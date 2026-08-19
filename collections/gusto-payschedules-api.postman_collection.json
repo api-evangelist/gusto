@@ -1,0 +1,318 @@
+{
+  "item": [
+    {
+      "id": "26660f77-a267-49ef-86cf-a0644ebe976a",
+      "name": "PaySchedules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c717b6b-7b87-4991-9f82-b2bb13e2db6c",
+          "name": "List pay schedules",
+          "request": {
+            "name": "List pay schedules",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "companies",
+                ":company_id",
+                "pay_schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb755399-4f35-43e3-8f32-12d41302cbd5",
+              "name": "List of pay schedules.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "companies",
+                    ":company_id",
+                    "pay_schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8e72c9e-db6b-47a1-936f-a09452f56479",
+          "name": "Create pay schedule",
+          "request": {
+            "name": "Create pay schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "companies",
+                ":company_id",
+                "pay_schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f8f8fc8-ba27-417c-8a9e-1db76e26ce09",
+              "name": "Pay schedule created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "companies",
+                    ":company_id",
+                    "pay_schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab713448-ca73-4493-a388-63d73412e47d",
+          "name": "Update pay schedule",
+          "request": {
+            "name": "Update pay schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "companies",
+                ":company_id",
+                "pay_schedules",
+                ":pay_schedule_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pay_schedule_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6239f691-dbd6-4ced-8bc9-ea8d6a2fbdc0",
+              "name": "Pay schedule updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "companies",
+                    ":company_id",
+                    "pay_schedules",
+                    ":pay_schedule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pay_schedule_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gusto.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d76aec06-3618-41fb-a058-7eac769c75c2",
+    "name": "Gusto Embedded Payroll BankAccounts PaySchedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for embedding Gusto's payroll, tax filing, and HR workflows into\nthird-party platforms. Supports companies, contractors, employees,\npayrolls, contractor payments, bank accounts, pay schedules, flows,\nreports, and webhook events. Date-based API versioning. Authentication is\nvia OAuth 2.0 for company-level access or a system-level bearer token for\npartner operations, with fine-grained scopes.\n\n\nContact Support:\n Name: Gusto Developer Documentation",
+      "type": "text/plain"
+    }
+  }
+}

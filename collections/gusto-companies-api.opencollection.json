@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gusto Embedded Payroll BankAccounts Companies API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve company information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies"
+          },
+          "docs": "Retrieve company information"
+        },
+        {
+          "info": {
+            "name": "Create partner-managed company",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gusto.com/v1/partner-managed-companies"
+          },
+          "docs": "Create partner-managed company"
+        },
+        {
+          "info": {
+            "name": "Update company details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gusto.com/v1/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update company details"
+        },
+        {
+          "info": {
+            "name": "Get federal tax configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gusto.com/v1/companies/:company_id/federal_tax_details",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get federal tax configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
