@@ -27,7 +27,7 @@ description: A cloud-based payroll, benefits, and human resources platform desig
   React SDK, and webhooks.
 created: '2026-05-05'
 modified: '2026-05-30'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: gusto:embedded-payroll-api
   name: Gusto Embedded Payroll API
