@@ -91,6 +91,8 @@ apis:
   humanURL: https://docs.gusto.com/embedded-payroll
   baseURL: https://api.gusto.com
   tags:
+  - Bank Accounts
+  tags_raw:
   - BankAccounts
   properties:
   - type: OpenAPI
@@ -111,6 +113,8 @@ apis:
   humanURL: https://docs.gusto.com/embedded-payroll
   baseURL: https://api.gusto.com
   tags:
+  - Contractor Payments
+  tags_raw:
   - ContractorPayments
   properties:
   - type: OpenAPI
@@ -161,6 +165,8 @@ apis:
   humanURL: https://docs.gusto.com/embedded-payroll
   baseURL: https://api.gusto.com
   tags:
+  - Pay Schedules
+  tags_raw:
   - PaySchedules
   properties:
   - type: OpenAPI
@@ -181,6 +187,8 @@ apis:
   humanURL: https://docs.gusto.com/embedded-payroll
   baseURL: https://api.gusto.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
