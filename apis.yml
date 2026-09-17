@@ -100,18 +100,6 @@ apis:
     url: https://www.npmjs.com/package/@gusto/embedded-react-sdk
   - type: Documentation
     url: https://docs.gusto.com/embedded-payroll/docs/react-sdk
-- aid: gusto:gusto-bankaccounts-api
-  name: Gusto BankAccounts API
-  description: The BankAccounts API from Gusto — 3 operation(s) for bankaccounts.
-  humanURL: https://docs.gusto.com/embedded-payroll
-  baseURL: https://api.gusto.com
-  tags:
-  - Bank Accounts
-  tags_raw:
-  - BankAccounts
-  properties:
-  - type: OpenAPI
-    url: openapi/gusto-bankaccounts-api-openapi.yml
 - aid: gusto:gusto-companies-api
   name: Gusto Companies API
   description: The Companies API from Gusto — 4 operation(s) for companies.
@@ -122,18 +110,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/gusto-companies-api-openapi.yml
-- aid: gusto:gusto-contractorpayments-api
-  name: Gusto ContractorPayments API
-  description: The ContractorPayments API from Gusto — 2 operation(s) for contractorpayments.
-  humanURL: https://docs.gusto.com/embedded-payroll
-  baseURL: https://api.gusto.com
-  tags:
-  - Contractor Payments
-  tags_raw:
-  - ContractorPayments
-  properties:
-  - type: OpenAPI
-    url: openapi/gusto-contractorpayments-api-openapi.yml
 - aid: gusto:gusto-contractors-api
   name: Gusto Contractors API
   description: The Contractors API from Gusto — 2 operation(s) for contractors.
@@ -174,18 +150,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/gusto-payrolls-api-openapi.yml
-- aid: gusto:gusto-payschedules-api
-  name: Gusto PaySchedules API
-  description: The PaySchedules API from Gusto — 2 operation(s) for payschedules.
-  humanURL: https://docs.gusto.com/embedded-payroll
-  baseURL: https://api.gusto.com
-  tags:
-  - Pay Schedules
-  tags_raw:
-  - PaySchedules
-  properties:
-  - type: OpenAPI
-    url: openapi/gusto-payschedules-api-openapi.yml
 - aid: gusto:gusto-reports-api
   name: Gusto Reports API
   description: The Reports API from Gusto — 2 operation(s) for reports.
@@ -208,6 +172,36 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/gusto-webhooks-api-openapi.yml
+- aid: gusto:gusto-bank-accounts-api
+  name: Gusto Bank Accounts API
+  description: The Bank Accounts API from Gusto — 3 operation(s) for bank accounts.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - Bank Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-bank-accounts-api-openapi.yml
+- aid: gusto:gusto-contractor-payments-api
+  name: Gusto Contractor Payments API
+  description: The Contractor Payments API from Gusto — 2 operation(s) for contractor payments.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - Contractor Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-contractor-payments-api-openapi.yml
+- aid: gusto:gusto-pay-schedules-api
+  name: Gusto Pay Schedules API
+  description: The Pay Schedules API from Gusto — 2 operation(s) for pay schedules.
+  humanURL: https://docs.gusto.com/embedded-payroll
+  baseURL: https://api.gusto.com
+  tags:
+  - Pay Schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/gusto-pay-schedules-api-openapi.yml
 common:
 - type: IssueTracker
   url: https://github.com/Gusto/embedded-react-sdk/issues
