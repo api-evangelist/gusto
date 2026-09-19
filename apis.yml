@@ -136,6 +136,8 @@ apis:
   humanURL: https://docs.gusto.com/embedded-payroll
   baseURL: https://api.gusto.com
   tags:
+  - Flow
+  tags_raw:
   - Flows
   properties:
   - type: OpenAPI
