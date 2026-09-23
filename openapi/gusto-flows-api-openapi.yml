@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gusto Embedded Payroll BankAccounts Flows API
+  title: Gusto Embedded Payroll Flows API
   version: 1.0.0
   description: 'REST API for embedding Gusto''s payroll, tax filing, and HR workflows into
 
@@ -12,9 +12,7 @@ info:
 
     via OAuth 2.0 for company-level access or a system-level bearer token for
 
-    partner operations, with fine-grained scopes.
-
-    '
+    partner operations, with fine-grained scopes.'
   contact:
     name: Gusto Developer Documentation
     url: https://docs.gusto.com/embedded-payroll

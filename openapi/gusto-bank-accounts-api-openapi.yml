@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gusto Embedded Payroll BankAccounts PaySchedules API
+  title: Gusto Embedded Payroll Bank Accounts API
   version: 1.0.0
   description: 'REST API for embedding Gusto''s payroll, tax filing, and HR workflows into
 
@@ -12,9 +12,7 @@ info:
 
     via OAuth 2.0 for company-level access or a system-level bearer token for
 
-    partner operations, with fine-grained scopes.
-
-    '
+    partner operations, with fine-grained scopes.'
   contact:
     name: Gusto Developer Documentation
     url: https://docs.gusto.com/embedded-payroll
@@ -24,28 +22,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: PaySchedules
+- name: Bank Accounts
 paths:
-  /v1/companies/{company_id}/pay_schedules:
-    get:
-      summary: List pay schedules
-      operationId: listPaySchedules
-      tags:
-      - PaySchedules
-      parameters:
-      - in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          description: List of pay schedules.
+  /v1/companies/{company_id}/bank-accounts:
     post:
-      summary: Create pay schedule
-      operationId: createPaySchedule
+      summary: Create bank account
+      operationId: createBankAccount
       tags:
-      - PaySchedules
+      - Bank Accounts
       parameters:
       - in: path
         name: company_id
@@ -54,13 +38,28 @@ paths:
           type: string
       responses:
         '201':
-          description: Pay schedule created.
-  /v1/companies/{company_id}/pay_schedules/{pay_schedule_id}:
+          description: Bank account created.
+  /v1/companies/{company_id}/bank-accounts/verify:
     put:
-      summary: Update pay schedule
-      operationId: updatePaySchedule
+      summary: Verify bank account deposits
+      operationId: verifyBankAccount
       tags:
-      - PaySchedules
+      - Bank Accounts
+      parameters:
+      - in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Bank account verified.
+  /v1/companies/{company_id}/bank-accounts/{bank_account_id}:
+    delete:
+      summary: Disable bank account
+      operationId: deleteBankAccount
+      tags:
+      - Bank Accounts
       parameters:
       - in: path
         name: company_id
@@ -68,13 +67,13 @@ paths:
         schema:
           type: string
       - in: path
-        name: pay_schedule_id
+        name: bank_account_id
         required: true
         schema:
           type: string
       responses:
-        '200':
-          description: Pay schedule updated.
+        '204':
+          description: Bank account disabled.
 components:
   securitySchemes:
     bearerAuth:

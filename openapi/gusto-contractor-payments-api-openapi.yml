@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gusto Embedded Payroll BankAccounts ContractorPayments API
+  title: Gusto Embedded Payroll Contractor Payments API
   version: 1.0.0
   description: 'REST API for embedding Gusto''s payroll, tax filing, and HR workflows into
 
@@ -12,9 +12,7 @@ info:
 
     via OAuth 2.0 for company-level access or a system-level bearer token for
 
-    partner operations, with fine-grained scopes.
-
-    '
+    partner operations, with fine-grained scopes.'
   contact:
     name: Gusto Developer Documentation
     url: https://docs.gusto.com/embedded-payroll
@@ -24,14 +22,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: ContractorPayments
+- name: Contractor Payments
 paths:
   /v1/companies/{company_id}/contractor_payments:
     get:
       summary: List contractor payments
       operationId: listContractorPayments
       tags:
-      - ContractorPayments
+      - Contractor Payments
       parameters:
       - in: path
         name: company_id
@@ -45,7 +43,7 @@ paths:
       summary: Pay contractor
       operationId: createContractorPayment
       tags:
-      - ContractorPayments
+      - Contractor Payments
       parameters:
       - in: path
         name: company_id
@@ -60,7 +58,7 @@ paths:
       summary: Create contractor payment group
       operationId: createContractorPaymentGroup
       tags:
-      - ContractorPayments
+      - Contractor Payments
       parameters:
       - in: path
         name: company_id

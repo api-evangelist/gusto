@@ -1,16 +1,7 @@
 {
   "provider": "gusto",
   "sources": [
-    "gusto-bankaccounts-api-openapi.yml",
-    "gusto-companies-api-openapi.yml",
-    "gusto-contractorpayments-api-openapi.yml",
-    "gusto-contractors-api-openapi.yml",
-    "gusto-employees-api-openapi.yml",
-    "gusto-flows-api-openapi.yml",
-    "gusto-payrolls-api-openapi.yml",
-    "gusto-payschedules-api-openapi.yml",
-    "gusto-reports-api-openapi.yml",
-    "gusto-webhooks-api-openapi.yml"
+    "_original/gusto-openapi.yml"
   ],
   "outputs": [
     "gusto-bankaccounts-api-openapi.yml",
@@ -19,14 +10,32 @@
     "gusto-contractors-api-openapi.yml",
     "gusto-employees-api-openapi.yml",
     "gusto-flows-api-openapi.yml",
-    "gusto-payrolls-api-openapi.yml",
     "gusto-payschedules-api-openapi.yml",
+    "gusto-payrolls-api-openapi.yml",
     "gusto-reports-api-openapi.yml",
     "gusto-webhooks-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 3 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "gusto-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: gusto-bank-accounts-api-openapi.yml, gusto-contractor-payments-api-openapi.yml, gusto-pay-schedules-api-openapi.yml",
+    "apis.yml register: written (+3 apis, 12 total)"
+  ],
+  "skipped": [
+    "gusto-bank-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gusto-companies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gusto-contractor-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gusto-contractors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gusto-employees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gusto-flows-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gusto-pay-schedules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gusto-payrolls-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gusto-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gusto-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
