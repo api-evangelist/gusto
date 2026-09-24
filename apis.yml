@@ -76,8 +76,6 @@ apis:
       https://raw.githubusercontent.com/api-evangelist/gusto/refs/heads/main/openapi/gusto-asyncapi.yml
   - type: Authentication
     url: https://docs.gusto.com/embedded-payroll/docs/authentication
-  - url: graphql/gusto-graphql.md
-    type: GraphQL
 - aid: gusto:embedded-react-sdk
   name: Gusto Embedded React SDK
   tags:
