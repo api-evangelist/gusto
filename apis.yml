@@ -30,6 +30,9 @@ accessModel:
   generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/gusto.png
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
 - Human Resources
 - Payroll
@@ -204,6 +207,9 @@ apis:
   - type: OpenAPI
     url: openapi/gusto-pay-schedules-api-openapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/gusto-capability-edges.yml
+  name: Gusto Business Capability Map
 - type: IssueTracker
   url: https://github.com/Gusto/embedded-react-sdk/issues
 - type: ContributionGuide
