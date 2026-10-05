@@ -1,0 +1,43 @@
+slug: gusto
+provider: Gusto
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Payrolls
+  spec_file: gusto-payrolls-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.9
+  evidence: PUT /v1/companies/{company_id}/payrolls/{payroll_id}/submit 'Submit payroll'; 'Calculate payroll
+    taxes and benefits'
+  reason: Running, calculating and submitting payroll is unambiguously payroll administration under HR
+    operations management.
+- tag: Pay Schedules
+  spec_file: gusto-pay-schedules-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.8
+  evidence: GET /v1/companies/{company_id}/pay_schedules 'List pay schedules'; POST 'Create pay schedule'
+  reason: Pay schedule configuration is a core payroll administration function within HR operations.
+- tag: Contractors
+  spec_file: gusto-contractors-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.7
+  evidence: GET /v1/companies/{company_uuid}/contractors 'List contractors'; POST 'Create contractor';
+    PUT 'Update contractor'
+  reason: CRUD over worker records maintained for payroll purposes is worker/employee record keeping,
+    i.e. HR operations.
