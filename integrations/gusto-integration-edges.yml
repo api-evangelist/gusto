@@ -1,0 +1,14 @@
+generated: '2026-10-12'
+method: searched
+checked:
+- https://gusto.com/apps
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: gusto
+  url: https://gusto.com/apps
+  app_count: null
+  adapter: sweep-hr-stores.py:unreadable
+  listed: 0
+  status: not-machine-readable (HTTP 403; 403 to non-browser clients (Cloudflare); no public listing JSON)
+edges: []
