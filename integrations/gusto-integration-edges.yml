@@ -3,6 +3,9 @@ method: searched
 checked:
 - clover/integrations/clover-integration-edges.yml
 - https://gusto.com/apps
+- https://kantarainitiative.org/trust-status-list/
+- https://msb.fincen.gov/
+- https://www.access-dvs-register.service.gov.uk/register/download-register
 marketplace_apps:
 - marketplace: own
   channel: partner-built
@@ -32,5 +35,36 @@ edges:
   category: QUICK_SERVICE_RESTAURANT
   badges:
   - Editor's Pick
+- partner_name: FinCEN (MSB registration)
+  partner: null
+  partner_match: register
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://msb.fincen.gov/
+  category: Money services business
+  contract_reference:
+    register: FinCEN MSB Registrant Search (msb.fincen.gov, full list export)
+    spec_file: null
+    standard: FinCEN MSB registration (US Bank Secrecy Act)
+    role: fincen-msb-registrant
+    registered_name: Gusto, Inc.
+    dba_name: null
+    register_id: Gusto, Inc.
+    matched_domain: gusto.com
+    matched_by: domain
+    identity: wikidata Q20540697 'Gusto' P856 https://gusto.com/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+    msb_activities:
+    - 409 money transmitter
+    states_of_activity: 52
+    received_date: 11/14/2024
+    signal_note: 'participation only: an MSB registration is not a licence or a certification; activities and states
+      are context, never counted'
+    detected_by: sweep-regtech-aml.py
+    detected: '2026-10-15'
+  detected_by: sweep-regtech-aml.py
+  first_seen: '2026-10-15'
 source:
 - clover/integrations/clover-integration-edges.yml
