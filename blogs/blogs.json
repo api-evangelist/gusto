@@ -2,6 +2,13 @@
   "repo": "gusto",
   "feeds": [
     {
+      "source": "https://gusto.com/blog",
+      "feed_url": "https://gusto.com/blog",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
       "source": "https://support.gusto.com/",
       "feed_url": "https://support.gusto.com/",
       "title": "",
@@ -9,6 +16,6 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-10-03T12:30:02Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 0
 }
