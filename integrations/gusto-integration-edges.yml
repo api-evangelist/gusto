@@ -2,10 +2,12 @@ generated: '2026-10-12'
 method: searched
 checked:
 - clover/integrations/clover-integration-edges.yml
+- google-workspace/integrations/google-workspace-integration-edges.yml
 - https://gusto.com/apps
 - https://kantarainitiative.org/trust-status-list/
 - https://msb.fincen.gov/
 - https://www.access-dvs-register.service.gov.uk/register/download-register
+- slack/integrations/slack-integration-edges.yml
 marketplace_apps:
 - marketplace: own
   channel: partner-built
@@ -66,5 +68,39 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-regtech-aml.py
   first_seen: '2026-10-15'
+- partner_name: Google Workspace (own)
+  partner: google-workspace
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://workspace.google.com/marketplace/app/gusto/416608718644
+  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
+  apps:
+  - Gusto
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Google Workspace app
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A0ANKEQTV0Q-gusto
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Gusto
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
 source:
 - clover/integrations/clover-integration-edges.yml
