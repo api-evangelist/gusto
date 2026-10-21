@@ -8,6 +8,11 @@ checked:
 - https://msb.fincen.gov/
 - https://www.access-dvs-register.service.gov.uk/register/download-register
 - slack/integrations/slack-integration-edges.yml
+- https://500.co/api/startups
+- https://500.co/companies
+- https://www.antler.co/portfolio
+- https://www.techstars.com/portfolio
+- https://www.ycombinator.com/companies
 marketplace_apps:
 - marketplace: own
   channel: partner-built
@@ -16,7 +21,7 @@ marketplace_apps:
   app_count: null
   adapter: sweep-hr-stores.py:unreadable
   listed: 0
-  status: not-machine-readable (HTTP 403; 403 to non-browser clients (Cloudflare); no public listing JSON)
+  status: not-machine-readable (HTTP 404; 403 to non-browser clients (Cloudflare); no public listing JSON)
 edges:
 - partner_name: Clover (own)
   partner: clover
@@ -102,5 +107,34 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Slack app
+- partner_name: Y Combinator
+  partner: y-combinator
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.ycombinator.com/companies/gusto
+  category: accelerator portfolio participation
+  contract_reference:
+    register: Y Combinator company directory (ycombinator.com/companies/<slug>)
+    standard: null
+    spec_file: null
+    role: accelerator-portfolio-company
+    registered_name: Gusto
+    register_id: https://www.ycombinator.com/companies/gusto
+    register_country: US
+    register_website: https://gusto.com
+    matched_domain: gusto.com
+    matched_by: domain
+    signal_note: 'participation only: the accelerator''s own portfolio register lists the company (cohort / investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-accelerator-portfolios.py
+    detected: '2026-10-21'
+    batch: Winter 2012
+    year: '2011'
+    status: Active
+  detected_by: sweep-accelerator-portfolios.py
+  first_seen: '2026-10-21'
 source:
 - clover/integrations/clover-integration-edges.yml
